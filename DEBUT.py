@@ -49,6 +49,16 @@ def disp(grille,taille):
             grille[ (i,j) ].disp_etat()
         print('|')
     return
+def genere(nbre,grille, taille):
+    disp(grille,taille)
+    for f in range(nbre):
+        sleep(1)
+        for i in grille.keys():
+            grille[i].etat_n(nb_voisins(grille[i],grille,taille))
+        for i in grille.keys():
+            grille[i].etat = grille[i].p_etat
+        os.system('cls' if os.name == 'nt' else 'clear')
+        disp(grille,taille)
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -65,17 +75,7 @@ def main():
     grille[(2,0)].etat = 1
     grille[(2,1)].etat = 1
     grille[(2,2)].etat = 1
-    disp(grille,taille)
-    for f in range(nbre):
-        sleep(1)
-        for i in grille.keys():
-            #grille[i].p_etat =
-            grille[i].etat_n(nb_voisins(grille[i],grille,taille))
-        for i in grille.keys():
-            grille[i].etat = grille[i].p_etat
-        os.system('cls' if os.name == 'nt' else 'clear')
-        disp(grille,taille)
-
+    genere(nbre,grille,taille)
     print("MERCI D'AVOIR JOUÉ")
 
 if __name__ == "__main__":
