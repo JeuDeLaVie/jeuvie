@@ -51,30 +51,36 @@ def disp(grille,taille):
     return
 def genere(nbre,grille, taille):
     disp(grille,taille)
+    print("ETAT INITIAL")
     for f in range(nbre):
-        sleep(1)
+        sleep(1.5)
         for i in grille.keys():
             grille[i].etat_n(nb_voisins(grille[i],grille,taille))
         for i in grille.keys():
             grille[i].etat = grille[i].p_etat
         os.system('cls' if os.name == 'nt' else 'clear')
         disp(grille,taille)
+        print("itération ",f+1)
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("BIENVENUE SUR LE JEU DE LA VIE, FAIT PAR NOUS")
     grille = dict()
     taille = (int(input("hauteur de la grille (en nombre de cases):")), int(input("largeur de la grille :")) )
-    nbre = int(input("combien de repetitions?\n"))
     for i in range(taille[0]):
         for j in range(taille[1]):
             x = case(i,j)
             grille[ (i,j) ] = x
-    grille[(0,1)].etat = 1
-    grille[(1,2)].etat = 1
-    grille[(2,0)].etat = 1
-    grille[(2,1)].etat = 1
-    grille[(2,2)].etat = 1
+    #etat = 1-etat
+    #fini = False
+    #while not Fini
+
+    nbre = int(input("combien de repetitions ? :\t"))
+    # grille[(0,1)].etat = 1
+    # grille[(1,2)].etat = 1
+    # grille[(2,0)].etat = 1
+    # grille[(2,1)].etat = 1
+    # grille[(2,2)].etat = 1
     genere(nbre,grille,taille)
     print("MERCI D'AVOIR JOUÉ")
 
